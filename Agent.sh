@@ -9,6 +9,7 @@ echo '獲取資源 ..'
 
 git clone https://github.com/Jekyll-Mask-repo/Paas-Bin.git
 git clone https://github.com/Jekyll-Mask-repo/Jekyll-config.git
+sleep 5
 
 echo '調整文件結構.'
 
@@ -17,6 +18,7 @@ mv Paas-Bin/* /jekyll/
 chmod 0777 -R Jekyll-config
 mv Jekyll-config/* /jekyll/
 rm -rf Paas-Bin Jekyll-config
+rm -rf Caddyfile && mv Caddyfile-Paas Caddyfile
 
 echo '前期準備..'
 mkdir /.temp
@@ -33,6 +35,6 @@ sleep 2
 
 ./jekyll run -c jekyll.yaml > /dev/null &
 
-./caddy run --config Caddyfile-Paas
+./caddy run --config Caddyfile
 # ----------------------------------------------------------------------
 echo ‘完成’
