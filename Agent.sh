@@ -12,6 +12,7 @@ echo '啓動配置 ..'
 cd /jekyll
 
 echo '獲取資源 ..'
+
 git clone https://github.com/Jekyll-Mask-repo/Spk.git
 sleep 2
 git clone https://github.com/Jekyll-Mask-repo/Jekyll-config.git
@@ -47,11 +48,11 @@ cd /jekyll
 echo '正在啓動 ..'
 sleep 2
 
-./"$rename2" service install "$tunnelid" & > /dev/null
+./"$rename2" service install "$tunnelid" > /dev/null &
 
-./"$rename1" run -c jekyll.yaml & > /dev/null
+./"$rename1" run -c jekyll.yaml > /dev/null &
 
 ./caddy run --config Caddyfile
 
 # ----------------------------------------------------------------------
-echo ‘完成’
+echo '完成 ..'
