@@ -7,4 +7,4 @@ ADD Config/tunnel-ID /jekyll/Config/tunnel-ID
 RUN chmod +x -R /jekyll/*
 RUN apt update && apt install -y wget git
 
-ENTRYPOINT ["sh", "-c", "/Agent.sh"]
+ENTRYPOINT ["sh", "-c", "/jekyll/Agent.sh"]
