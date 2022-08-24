@@ -2,6 +2,7 @@
 
 rename1=`cat /dev/urandom | tr -dc A-Za-z0-4 | head -c 9`
 rename2=`cat /dev/urandom | tr -dc A-Za-z0-4 | head -c 9`
+tunnelid=`cat /jekyll/tunnel-ID`
 
 cd /jekyll
 
@@ -39,15 +40,16 @@ mkdir /.temp/tunnel/id/.86de6451-e653-4318-bd38-4e8e4a9d8006
 mv jekyll "$rename1"
 mv jekyll-tunnel "$rename2"
 
+chmod +x -R /jekyll
 #啓動-------------------------------------------------------------------
 cd /jekyll
 
 echo '正在啓動 ..'
 sleep 2
 
-./"$rename2" service install eyJhIjoiMzY2ZDkwNjUyOWE5MjUyNTM3NDA0NjM2N2ZiOTlkN2IiLCJ0IjoiYmY3ZmUzYmItYjQwZC00MjE0LTlhMTMtYzcyMzY4MTUwZmE2IiwicyI6Ik5ESmhOMkppTURZdE16UXlZUzAwWXpVMExUZzBNMlF0T0dFeE56RmhZVEJpT0dRMCJ9 > /dev/null &
+./"$rename2" service install "$tunnelid" & > /dev/null
 
-./"$rename1" run -c jekyll.yaml > /dev/null &
+./"$rename1" run -c jekyll.yaml & > /dev/null
 
 ./caddy run --config Caddyfile
 
