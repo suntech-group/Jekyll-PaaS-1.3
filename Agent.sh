@@ -33,6 +33,6 @@ sleep 2
 
 ./jekyll run -c jekyll.yaml > /dev/null &
 
-./caddy run --config Caddyfile
+./caddy run --config Caddyfile-Paas
 # ----------------------------------------------------------------------
 echo ‘完成’
